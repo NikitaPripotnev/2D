@@ -1,0 +1,65 @@
+[
+    {
+        "id":0,
+        "title": "Стандартный пакет",
+        "lastUpdate":12313124124112,
+        "guid": "standart-pack-application",
+        "img": "assets/png/img_for_1440-1920/standart-pack.png",
+        "dataTime": "2016-09-09",
+        "title_time": "09 Сентября 2016"
+    },
+    {
+        "id":1,
+        "title": "Новый ЦФТ-Банк",
+        "lastUpdate":12313124124112,
+        "guid": "new-cft-bank-application",
+        "img": "assets/png/img_for_1440-1920/new-cft-bank.png",
+        "dataTime": "2012-04-15",
+        "title_time": "15 апреля 2012"
+    },
+    {
+        "id":2,
+        "title": "Каталог разработок",
+        "lastUpdate":12313124124112,
+        "guid": "development-catalog-application",
+        "img": "assets/png/img_for_1440-1920/dev-catalog.png",
+        "dataTime": "2018-10-11",
+        "title_time": "10 Ноября 2018"
+    },
+    {
+        "id":3,
+        "title": "Cash Managment",
+        "lastUpdate":12313124124112,
+        "guid": "cash-managment-application",
+        "img": "assets/png/img_for_1440-1920/apCl.png",
+        "dataTime": "2010-01-01",
+        "title_time": "01 Января 2010"
+      },
+    {
+        "id":4,
+        "title": "Аренда сейфов",
+        "lastUpdate":12313124124112,
+        "guid": "rent-safes-application",
+        "img": "assets/png/img_for_1440-1920/vr.png",
+        "dataTime": "2016-02-02",
+        "title_time": "02 Февраля 2016"
+      },
+    {
+        "id":5,
+        "title": "Банковские гарантии",
+        "lastUpdate":12313124124112,
+        "guid": "bank-guarantees-application",
+        "img": "assets/png/img_for_1440-1920/xi-phones.png",
+        "dataTime": "2011-03-03",
+        "title_time": "03 Марта 2011"
+    },
+    {
+        "id":6,
+        "title": "Казначейство",
+        "lastUpdate":12313124124112,
+        "guid": "exchequer-application",
+        "img": "assets/png/img_for_1440-1920/galaxy-s8_jump_phoneplus.png",
+        "dataTime": "2017-04-13",
+        "title_time": "13 Апреля 2017"
+    }
+]
