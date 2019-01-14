@@ -25,13 +25,12 @@ class Controls {
       false
     );
   }
-  onKey(val, e) {
-    console.log(val, e);
-    let state = this.codes[e.keyCode];
+  onKey(val, event) {
+    let state = this.codes[event.keyCode];
     if (typeof state === 'undefined') return;
     this.states[state] = val;
-    e.preventDefault && e.preventDefault();
-    e.stopPropagation && e.stopPropagation();
+    event.preventDefault && event.preventDefault();
+    event.stopPropagation && event.stopPropagation();
   }
 }
 

@@ -1,4 +1,4 @@
-class Arrow{
+class Arrow {
   constructor(x, y, direction, scene) {
     this.active = true;
     this.x = x;

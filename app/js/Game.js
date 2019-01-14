@@ -4,9 +4,10 @@ import Player from './Player.js';
 import Sound from './Sound.js';
 
 class Game extends Scene {
-  constructor(screen, controls) {
+  constructor(screen, controls, hero) {
     super(screen, controls);
     this.camera = new Camera(screen, controls, 0, 0, this);
+    this.hero = hero;
     this.player = new Player(100, -64, this);
     this.monster = new Player(896, 128, this);
     this.monster.type = 'monster';
@@ -119,7 +120,7 @@ class Game extends Scene {
 
     //render player
     this.ctx.drawImage(
-      this.imgs['player'],
+      this.imgs[this.hero],
       this.player.j * 64,
       this.player.i * 64,
       64,
@@ -138,7 +139,7 @@ class Game extends Scene {
     for (let i = 0; i < this.arrows.length; i++) {
       this.arrows[i].update(time);
       this.ctx.drawImage(
-        this.imgs['player'],
+        this.imgs[this.hero],
         this.arrows[i].j * 64,
         this.arrows[i].i * 64,
         64,

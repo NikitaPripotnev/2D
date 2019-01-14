@@ -5,10 +5,13 @@ class Lib extends Scene {
     super(screen, controls);
     this.assets = [
       { name: 'orc', path: '../assets/orc.png' },
-      { name: 'player', path: '../assets/vova.png' },
+      { name: 'vova', path: '../assets/vova.png' },
+      { name: 'ilya', path: '../assets/ilya.png' },
       { name: 'sceleton', path: '../assets/sceleton.png' },
       { name: 'bg', path: '../assets/tiles.png' },
-      { name: 'title', path: '../assets/title.png' }
+      { name: 'title', path: '../assets/title.png' },
+      { name: 'gold', path: '../assets/gold.png' },
+      { name: 'choose-players', path: '../assets/choose-players.png' }
     ];
     this.total = this.assets.length;
     this.loaded = 0;
