@@ -10,7 +10,7 @@ class Menu extends Scene {
     this.ctx.font = '22px Arial';
     this.ctx.fillText('Нажмите пробел', 250, 600);
     if (this.controls.states['fire']) {
-      return 'choose';
+      return 'afterMenu';
     } else {
       return 'menu';
     }

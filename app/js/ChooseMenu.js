@@ -1,6 +1,7 @@
 import Scene from './Scene.js';
+import Sound from './Sound.js';
 
-class ChoosePlayer extends Scene {
+class ChooseMenu extends Scene {
   constructor(screen, controls) {
     super(screen, controls);
     this.status = false;
@@ -9,12 +10,17 @@ class ChoosePlayer extends Scene {
     this.y = 208;
     this.hero = 'vova';
     this.pause = false;
-    document.addEventListener('keyup', event => this.onUp(event), false);
+    this.sound = new Sound('../assets/sounds/button10.wav');
+    this.handler = (event) => {
+      this.onUp(event);
+    }
+    document.addEventListener('keyup', this.handler, false);
   }
   onUp(event) {
     setTimeout(() => {
       this.pause = true;
-    }, 1000);
+    }, 700);
+    this.sound.play();
     let state = this.controls.codes[event.keyCode];
     if (state === 'right') {
       if (this.x + 181 > 600) {
@@ -32,6 +38,7 @@ class ChoosePlayer extends Scene {
     }
     if (state === 'fire' && this.pause) {
       this.status = true;
+      document.removeEventListener('keyup', this.handler, false);
     }
     if (this.x === 68) {
       this.hero = 'vova';
@@ -40,7 +47,7 @@ class ChoosePlayer extends Scene {
       this.hero = 'ilya';
     }
     if (this.x === 430) {
-      this.hero = 'vova';
+      this.hero = 'denis';
     }
   }
   render(time) {
@@ -67,4 +74,4 @@ class ChoosePlayer extends Scene {
     }
   }
 }
-export default ChoosePlayer;
+export default ChooseMenu;

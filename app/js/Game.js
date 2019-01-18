@@ -13,8 +13,8 @@ class Game extends Scene {
     this.monster.type = 'monster';
     this.monster.status = 'walking';
     this.sounds = {};
-    this.sounds['arrow'] = new Sound('assets/arrow.wav');
-    this.sounds['sword'] = new Sound('assets/sword.wav');
+    this.sounds['arrow'] = new Sound('../assets/sounds/arrow.wav');
+    this.sounds['sword'] = new Sound('../assets/sounds/sword.wav');
 
     this.map = [
       [28, 28, 28, 28, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],

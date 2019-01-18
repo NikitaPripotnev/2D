@@ -1,5 +1,4 @@
 import Scene from './Scene.js';
-
 class Lib extends Scene {
   constructor(screen, controls) {
     super(screen, controls);
@@ -7,6 +6,7 @@ class Lib extends Scene {
       { name: 'orc', path: '../assets/orc.png' },
       { name: 'vova', path: '../assets/vova.png' },
       { name: 'ilya', path: '../assets/ilya.png' },
+      { name: 'denis', path: '../assets/denis.png' },
       { name: 'sceleton', path: '../assets/sceleton.png' },
       { name: 'bg', path: '../assets/tiles.png' },
       { name: 'title', path: '../assets/title.png' },

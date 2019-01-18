@@ -7,11 +7,11 @@ class Sound {
     this.sound.style.display = 'none';
     document.body.appendChild(this.sound);
   }
-  
+
   play () {
     this.sound.play();
   }
-  
+
   stop () {
     this.sound.pause();
   }
