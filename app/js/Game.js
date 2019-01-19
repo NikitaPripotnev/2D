@@ -7,6 +7,9 @@ class Game extends Scene {
   constructor(screen, controls, hero) {
     super(screen, controls);
     this.camera = new Camera(screen, controls, 0, 0, this);
+    this.sizeX = Math.floor(screen.canvas.width / screen.cell);
+    this.sizeY = Math.floor(screen.canvas.height / screen.cell);
+    this.cell = screen.cell;
     this.hero = hero;
     this.player = new Player(100, -64, this);
     this.monster = new Player(896, 128, this);
@@ -15,27 +18,28 @@ class Game extends Scene {
     this.sounds = {};
     this.sounds['arrow'] = new Sound('../assets/sounds/arrow.wav');
     this.sounds['sword'] = new Sound('../assets/sounds/sword.wav');
-
+    console.log(screen,'screen');
+    console.log(this);
     this.map = [
-      [28, 28, 28, 28, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 25, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 11, 12, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 10, 0, 0, 0, 0, 13, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 20, 21, 22, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 29, 30, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 15, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 25, 0, 0, 0, 0, 0, 11, 12, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      [28, 28, 28, 28, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 25, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 11, 12, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 10, 0, 0, 0, 0, 13, 14, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 20, 21, 22, 0, 0, 0, 0, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 29, 30, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 15, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 25, 0, 0, 0, 0, 0, 11, 12, 0, 0, 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
     ];
 
     this.tiles = [
@@ -77,23 +81,23 @@ class Game extends Scene {
   }
 
   render_bg(time) {
-    let start_col = Math.floor(this.camera.x / 64);
-    let start_row = Math.floor(this.camera.y / 64);
-
-    for (let i = start_row; i < start_row + 11; i++) {
-      for (let j = start_col; j < start_col + 11; j++) {
-        if (j < 20 && i < 20) {
+    let start_col = Math.floor(this.camera.x / this.cell);
+    let start_row = Math.floor(this.camera.y / this.cell);
+    console.log(start_col, start_row, 'start');
+    for (let i = start_row; i < start_row + this.sizeY; i++) {
+      for (let j = start_col; j < start_col + this.sizeX; j++) {
+        if (j < 27 && i < 27) {
           let tile = this.tiles[this.map[i][j]];
           this.ctx.drawImage(
             this.imgs['bg'],
-            tile.j * 64,
-            tile.i * 64,
-            64,
-            64,
-            j * 64 - this.camera.x,
-            i * 64 - this.camera.y,
-            64,
-            64
+            tile.j * this.cell,
+            tile.i * this.cell,
+            this.cell,
+            this.cell,
+            j * this.cell - this.camera.x,
+            i * this.cell - this.camera.y,
+            this.cell,
+            this.cell
           );
         }
       }
@@ -108,27 +112,27 @@ class Game extends Scene {
     //render monster
     this.ctx.drawImage(
       this.imgs['orc'],
-      this.monster.j * 64,
-      this.monster.i * 64,
-      64,
-      64,
+      this.monster.j * this.cell,
+      this.monster.i * this.cell,
+      this.cell,
+      this.cell,
       this.monster.x - this.camera.x,
       this.monster.y - this.camera.y,
-      64,
-      64
+      this.cell,
+      this.cell
     );
 
     //render player
     this.ctx.drawImage(
       this.imgs[this.hero],
-      this.player.j * 64,
-      this.player.i * 64,
-      64,
-      64,
+      this.player.j * this.cell,
+      this.player.i * this.cell,
+      this.cell,
+      this.cell,
       this.player.x - this.camera.x,
       this.player.y - this.camera.y,
-      64,
-      64
+      this.cell,
+      this.cell
     );
 
     //render arows
@@ -140,14 +144,14 @@ class Game extends Scene {
       this.arrows[i].update(time);
       this.ctx.drawImage(
         this.imgs[this.hero],
-        this.arrows[i].j * 64,
-        this.arrows[i].i * 64,
-        64,
-        64,
+        this.arrows[i].j * this.cell,
+        this.arrows[i].i * this.cell,
+        this.cell,
+        this.cell,
         this.arrows[i].x - this.camera.x,
         this.arrows[i].y - this.camera.y,
-        64,
-        64
+        this.cell,
+        this.cell
       );
     }
   }
