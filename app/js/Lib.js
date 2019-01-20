@@ -36,13 +36,15 @@ class Lib extends Scene {
       this.ctx.fillStyle = '#000000';
       this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
       this.ctx.fillStyle = '#ffffff';
-      this.ctx.font = '22px Georgia';
+      this.ctx.font = '26px Georgia';
       this.ctx.fillText(`Loading ${this.loaded}/${this.total}`, 50, 70);
       return 'lib';
     }
 
     if (this.status == 'loaded') {
       if (time - this.loaded_at > 1000) {
+        this.ctx.fillStyle = '#000000';
+        this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
         return 'menu';
       }
       return 'lib';

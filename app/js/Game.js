@@ -84,8 +84,8 @@ class Game extends Scene {
     let start_col = Math.floor(this.camera.x / this.cell);
     let start_row = Math.floor(this.camera.y / this.cell);
     console.log(start_col, start_row, 'start');
-    for (let i = start_row; i < start_row + this.sizeY; i++) {
-      for (let j = start_col; j < start_col + this.sizeX; j++) {
+    for (let i = start_row; i < start_row + this.sizeY+1; i++) {
+      for (let j = start_col; j < start_col + this.sizeX+1; j++) {
         if (j < 27 && i < 27) {
           let tile = this.tiles[this.map[i][j]];
           this.ctx.drawImage(

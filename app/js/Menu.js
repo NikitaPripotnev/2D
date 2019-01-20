@@ -3,12 +3,13 @@ import Scene from './Scene.js';
 class Menu extends Scene {
   constructor(screen, controls) {
     super(screen, controls);
+    this.offset = this.canvas.width / 2 - 320;
   }
   render(time) {
-    this.ctx.drawImage(this.imgs['title'], 0, 0, 640, 640, 0, 0, 640, 640);
+    this.ctx.drawImage(this.imgs['title'], this.offset, 0);
     this.ctx.fillStyle = '#FFFFFF';
-    this.ctx.font = '22px Arial';
-    this.ctx.fillText('Нажмите пробел', 250, 600);
+    this.ctx.font = '26px Arial';
+    this.ctx.fillText('Нажмите пробел', this.offset + 200, 600);
     if (this.controls.states['fire']) {
       return 'afterMenu';
     } else {

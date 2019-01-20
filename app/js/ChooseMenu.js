@@ -6,7 +6,8 @@ class ChooseMenu extends Scene {
     super(screen, controls);
     this.status = false;
     this.count = 0;
-    this.x = 68;
+    this.offset = this.canvas.width / 2 - 320;
+    this.x = this.offset + 68;
     this.y = 208;
     this.hero = 'vova';
     this.pause = false;
@@ -19,19 +20,19 @@ class ChooseMenu extends Scene {
   onUp(event) {
     setTimeout(() => {
       this.pause = true;
-    }, 700);
+    }, 600);
     this.sound.play();
     let state = this.controls.codes[event.keyCode];
     if (state === 'right') {
-      if (this.x + 181 > 600) {
-        this.x = 68;
+      if (this.x + 181 > this.offset+600) {
+        this.x = this.offset + 68;
       } else {
         this.x += 181;
       }
     }
     if (state === 'left') {
-      if (this.x - 181 < 0) {
-        this.x = 430;
+      if (this.x - 181 < this.offset + 0) {
+        this.x = this.offset + 430;
       } else {
         this.x -= 181;
       }
@@ -40,32 +41,26 @@ class ChooseMenu extends Scene {
       this.status = true;
       document.removeEventListener('keyup', this.handler, false);
     }
-    if (this.x === 68) {
+    if (this.x === this.offset + 68) {
       this.hero = 'vova';
     }
-    if (this.x === 249) {
+    if (this.x === this.offset + 249) {
       this.hero = 'ilya';
     }
-    if (this.x === 430) {
+    if (this.x === this.offset + 430) {
       this.hero = 'denis';
     }
   }
   render(time) {
     this.ctx.drawImage(
       this.imgs['choose-players'],
-      0,
-      0,
-      640,
-      640,
-      0,
-      0,
-      640,
-      640
+      this.offset,
+      0
     );
     this.ctx.drawImage(this.imgs['gold'], this.x, this.y);
     this.ctx.fillStyle = '#FFFFFF';
     this.ctx.font = '22px Arial';
-    this.ctx.fillText('Нажмите пробел для выбора', 200, 600);
+    this.ctx.fillText('Нажмите пробел для выбора', this.offset + 200, 600);
 
     if (this.status === true) {
       return 'createHero';

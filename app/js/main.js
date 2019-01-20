@@ -12,7 +12,7 @@ let screen = {};
 screen.canvas = document.getElementById('screen');
 screen.cell = 64;
 screen.canvas.width = screen.cell*Math.floor(window.screen.width/screen.cell);
-screen.canvas.height = 0.8*screen.cell*Math.floor(window.screen.height/screen.cell);
+screen.canvas.height = 0.85 * screen.cell*Math.floor(window.screen.height/screen.cell);
 screen.imgs = {};
 console.log(screen, 'screen in main');
 
