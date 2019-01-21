@@ -10,13 +10,17 @@ class Player {
     this.scene = scene;
     this.dead = false;
     this.lastTime = 0;
-    this.speed = 3;
+    this.speed = Math.floor(this.scene.cell * 0.07);
     this.direction = 'down';
     this.status = 'start';
     this.change_animation = true;
     this.current_animation_frame = 0;
     this.current_action = this.move_down;
     this.got_obstacle = false;
+    this.offsetX1 = Math.floor(this.scene.cell * 0.3);
+    this.offsetX2 = Math.floor(this.scene.cell * 0.3);
+    this.offsetY1 = Math.floor(this.scene.cell * 0.8);
+    this.offsetY2 = Math.floor(this.scene.cell * 0.1);
     this.sprites = {
       standing: {
         right: {
@@ -277,19 +281,19 @@ class Player {
     }
 
     let x1 = x;
-    let x2 = x + 64;
+    let x2 = x + this.scene.cell;
     let y1 = y;
-    let y2 = y + 64;
+    let y2 = y + this.scene.cell;
 
-    x1 = x1 + 20;
-    x2 = x2 - 20;
-    y1 = y1 + 20;
-    y2 = y2 - 10;
+    x1 = x1 + this.offsetX1;
+    x2 = x2 - this.offsetX2;
+    y1 = y1 + this.offsetY1;
+    y2 = y2 - this.offsetY2;
 
-    let j1 = Math.floor(x1 / 64);
-    let j2 = Math.floor(x2 / 64);
-    let i1 = Math.floor(y1 / 64);
-    let i2 = Math.floor(y2 / 64);
+    let j1 = Math.floor(x1 / this.scene.cell);
+    let j2 = Math.floor(x2 / this.scene.cell);
+    let i1 = Math.floor(y1 / this.scene.cell);
+    let i2 = Math.floor(y2 / this.scene.cell);
 
     let walkable = true;
 
@@ -413,19 +417,19 @@ class Player {
   monster_ai_controll(time) {
     if (
       this.scene.player.dead == false &&
-      (this.scene.player.x < this.x + 64 &&
-        this.scene.player.x + 64 > this.x &&
-        this.scene.player.y < this.y + 64 &&
-        64 + this.scene.player.y > this.y)
+      (this.scene.player.x < this.x + this.scene.cell &&
+        this.scene.player.x + this.scene.cell > this.x &&
+        this.scene.player.y < this.y + this.scene.cell &&
+        this.scene.cell + this.scene.player.y > this.y)
     ) {
       if (this.x > this.scene.player.x) {
         this.direction = 'left';
         this.y = this.scene.player.y;
-        this.x = this.scene.player.x + 32;
+        this.x = this.scene.player.x + this.scene.cell / 2;
       } else {
         this.direction = 'right';
         this.y = this.scene.player.y;
-        this.x = this.scene.player.x - 32;
+        this.x = this.scene.player.x - this.scene.cell / 2;
       }
       this.attack();
       this.scene.sounds['sword'].play();

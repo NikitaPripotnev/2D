@@ -4,6 +4,7 @@ class Menu extends Scene {
   constructor(screen, controls) {
     super(screen, controls);
     this.offset = this.canvas.width / 2 - 320;
+    console.log( this.offset, this.canvas.width, 'in menu width: offset and canvasw');
   }
   render(time) {
     this.ctx.drawImage(this.imgs['title'], this.offset, 0);

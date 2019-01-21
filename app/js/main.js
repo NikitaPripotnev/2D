@@ -14,14 +14,12 @@ screen.cell = 64;
 screen.canvas.width = screen.cell*Math.floor(window.screen.width/screen.cell);
 screen.canvas.height = 0.85 * screen.cell*Math.floor(window.screen.height/screen.cell);
 screen.imgs = {};
-console.log(screen, 'screen in main');
 
 let loop = new Gameloop();
 let scenes = {};
 scenes['lib'] = new Lib(screen, controls);
 let soundMenu = new Sound('../assets/sounds/menu.mp3');
-soundMenu.stop();
-soundMenu.play();
+// soundMenu.play();
 scenes['menu'] = new Menu(screen, controls);
 scenes['win'] = new Win(screen, controls);
 

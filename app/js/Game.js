@@ -76,17 +76,16 @@ class Game extends Scene {
       { j: 1, i: 3, walk: true }, //30 - bottom-left water
       { j: 2, i: 3, walk: true } //31 - bottom-right water
     ];
-
+    console.log(this.map.length);
     this.arrows = [];
   }
 
   render_bg(time) {
     let start_col = Math.floor(this.camera.x / this.cell);
     let start_row = Math.floor(this.camera.y / this.cell);
-    console.log(start_col, start_row, 'start');
     for (let i = start_row; i < start_row + this.sizeY+1; i++) {
       for (let j = start_col; j < start_col + this.sizeX+1; j++) {
-        if (j < 27 && i < 27) {
+        if (j < this.map[0].length && i < this.map.length) {
           let tile = this.tiles[this.map[i][j]];
           this.ctx.drawImage(
             this.imgs['bg'],
