@@ -128,8 +128,9 @@ class Game extends Scene {
     this.render_bg(time);
     this.render_sprites(time);
     this.render_bg_overflow(time);
+    console.log('x: ' + this.player.x, 'y: ' + this.player.y);
 
-    if (this.monster.dead && this.player.x > 1152 && this.player.y > 1100) {
+    if (this.monster.dead && this.player.x > 1200 && this.player.y > 1070) {
       return 'win';
     } else {
       return 'game';

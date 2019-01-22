@@ -21,7 +21,7 @@ scenes['lib'] = new Lib(screen, controls);
 let soundMenu = new Sound('../assets/sounds/menu.mp3');
 // soundMenu.play();
 scenes['menu'] = new Menu(screen, controls);
-scenes['win'] = new Win(screen, controls);
+scenes['win'] = new Win(screen, controls, 1);
 
 let current_scene = 'lib';
 
