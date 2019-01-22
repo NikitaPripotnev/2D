@@ -7,6 +7,7 @@ class Player {
     this.i = 0;
     this.j = 0;
     this.type = 'player';
+    this.size = 64;
     this.scene = scene;
     this.dead = false;
     this.lastTime = 0;

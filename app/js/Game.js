@@ -10,6 +10,7 @@ class Game extends Scene {
     this.camera = new Camera(screen, controls, 0, 0, this);
     this.sizeX = Math.floor(screen.canvas.width / screen.cell);
     this.sizeY = Math.floor(screen.canvas.height / screen.cell);
+    this.size_players = 64;
     this.cell = screen.cell;
     this.hero = hero;
     this.player = new Player(100, -64, this);
@@ -77,27 +78,27 @@ class Game extends Scene {
     //render monster
     this.ctx.drawImage(
       this.imgs['orc'],
-      this.monster.j * this.cell,
-      this.monster.i * this.cell,
-      this.cell,
-      this.cell,
+      this.monster.j * this.size_players,
+      this.monster.i * this.size_players,
+      this.size_players,
+      this.size_players,
       this.monster.x - this.camera.x,
       this.monster.y - this.camera.y,
-      this.cell,
-      this.cell
+      this.size_players,
+      this.size_players
     );
 
     //render player
     this.ctx.drawImage(
       this.imgs[this.hero],
-      this.player.j * this.cell,
-      this.player.i * this.cell,
-      this.cell,
-      this.cell,
+      this.player.j * this.size_players,
+      this.player.i * this.size_players,
+      this.size_players,
+      this.size_players,
       this.player.x - this.camera.x,
       this.player.y - this.camera.y,
-      this.cell,
-      this.cell
+      this.size_players,
+      this.size_players
     );
 
     //render arows
@@ -109,14 +110,14 @@ class Game extends Scene {
       this.arrows[i].update(time);
       this.ctx.drawImage(
         this.imgs[this.hero],
-        this.arrows[i].j * this.cell,
-        this.arrows[i].i * this.cell,
-        this.cell,
-        this.cell,
+        this.arrows[i].j * this.size_players,
+        this.arrows[i].i * this.size_players,
+        this.size_players,
+        this.size_players,
         this.arrows[i].x - this.camera.x,
         this.arrows[i].y - this.camera.y,
-        this.cell,
-        this.cell
+        this.size_players,
+        this.size_players
       );
     }
   }
@@ -130,7 +131,7 @@ class Game extends Scene {
     this.render_bg_overflow(time);
     console.log('x: ' + this.player.x, 'y: ' + this.player.y);
 
-    if (this.monster.dead && this.player.x > 1200 && this.player.y > 1070) {
+    if (this.monster.dead && this.player.x > 1034 && this.player.y > 1142 && this.player.x < 1080 && this.player.y < 1192) {
       return 'win';
     } else {
       return 'game';

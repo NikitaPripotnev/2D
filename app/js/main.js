@@ -10,7 +10,7 @@ import ChooseMenu from './ChooseMenu.js';
 const controls = new Controls();
 let screen = {};
 screen.canvas = document.getElementById('screen');
-screen.cell = 64;
+screen.cell = 96;
 screen.canvas.width = screen.cell*Math.floor(window.screen.width/screen.cell);
 screen.canvas.height = 0.85 * screen.cell*Math.floor(window.screen.height/screen.cell);
 screen.imgs = {};
