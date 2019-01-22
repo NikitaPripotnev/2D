@@ -299,7 +299,7 @@ class Player {
 
     for (let i = i1; i <= i2; i++) {
       for (let j = j1; j <= j2; j++) {
-        if (!this.scene.tiles[this.scene.map[i][j]].walk) {
+        if (!this.scene.level.tiles[this.scene.level.map[i][j]].walk) {
           walkable = false;
         }
       }

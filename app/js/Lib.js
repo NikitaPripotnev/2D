@@ -9,6 +9,7 @@ class Lib extends Scene {
       { name: 'denis', path: '../assets/denis.png' },
       { name: 'sceleton', path: '../assets/sceleton.png' },
       { name: 'bg', path: '../assets/tiles.png' },
+      { name: 'bg-overflow', path: '../assets/tiles-overflow.png' },
       { name: 'title', path: '../assets/title.png' },
       { name: 'gold', path: '../assets/gold.png' },
       { name: 'choose-players', path: '../assets/choose-players.png' }

@@ -71,7 +71,7 @@ class Arrow {
       this.scene.monster.set_action('down', 'dead');
       return true;
     }
-    return !this.scene.tiles[this.scene.map[i][j]].walk;
+    return !this.scene.level.tiles[this.scene.level.map[i][j]].walk;
   }
 }
 
