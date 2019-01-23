@@ -11,7 +11,7 @@ class Win extends Scene {
     this.ctx.fillStyle = '#ffffff';
     this.ctx.font = '26px Georgia';
     this.ctx.fillText(
-      'Level ' + this.level + ' is comlited!',
+      'Level ' + this.level + ' is comleted!',
       this.canvas.width / 2 - 40,
       this.canvas.height / 2 - 20
     );

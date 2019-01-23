@@ -18,10 +18,10 @@ class Player {
     this.current_animation_frame = 0;
     this.current_action = this.move_down;
     this.got_obstacle = false;
-    this.offsetX1 = Math.floor(this.scene.cell * 0.3);
-    this.offsetX2 = Math.floor(this.scene.cell * 0.3);
-    this.offsetY1 = Math.floor(this.scene.cell * 0.8);
-    this.offsetY2 = Math.floor(this.scene.cell * 0.1);
+    this.offsetX1 = Math.floor(this.scene.cell * 0.35);
+    this.offsetX2 = Math.floor(this.scene.cell * 0.55);
+    this.offsetY1 = Math.floor(this.scene.cell * 0.6);
+    this.offsetY2 = Math.floor(this.scene.cell * 0.4);
     this.sprites = {
       standing: {
         right: {
